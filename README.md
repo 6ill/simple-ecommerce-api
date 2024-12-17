@@ -26,6 +26,8 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+The project specifications based on [Source](https://projects.masteringbackend.com/projects/e-commerce-api-build-your-own-alibaba) 
+
 ## Installation
 
 ```bash
