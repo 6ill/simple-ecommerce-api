@@ -29,8 +29,8 @@ export class UsersService {
             if(!isValid) {
                 throw new ForbiddenException("Not valid password!")
             }
-            const { email } = user;
-            return this.jwtService.sign({username, email, role:Role.User});
+            const { id, email } = user;
+            return this.jwtService.sign({id, username, email, role:Role.User});
         } catch (error) {
             console.error(error);
             return null;
