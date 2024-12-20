@@ -15,6 +15,14 @@ export class CartsService {
         private readonly cartItemsRepository: Repository<CartItem>,
     ) {}
 
+    async getCartByUserId(userId:string, withRelation:boolean): Promise<Cart> {
+        return await this.cartsRepository.findOne({
+            where: { user: {id: userId}},
+            relations: {
+                items: { product: withRelation, cart:false}
+            }
+        });
+    }
 
     async getCartByUsername(username:string, withRelation:boolean): Promise<Cart> {
         return await this.cartsRepository.findOne({

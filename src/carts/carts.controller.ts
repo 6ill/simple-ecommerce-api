@@ -21,10 +21,9 @@ export class CartsController {
 
     @Post()
     async addToCart(
-    @User('username') username: string, 
+        @User('username') username: string, 
         @Body() createCartItemDto: CreateCartItemDto
     ) { 
-        console.log("dto: ", createCartItemDto)
         const cartItem = await this.cartsService.addToCart(username, createCartItemDto);
         return {
             message: "Added to cart successfully!",
@@ -46,18 +45,14 @@ export class CartsController {
         @User('username') username: string,
         @Param('itemId') itemId: string
     ) {
-        console.log("Cari Cart item Query \n")
         const cartItem = await this.cartsService.getCartItem(itemId);
         if(!cartItem) {
             throw new BadRequestException("Cart item not found!");
         }
 
-        console.log("Cek user dari Cart item Query \n")
         if(cartItem.cart.user.username !== username) {
             throw new ForbiddenException("You are only able to remove your own cart item!")
         }
-
-        console.log("Hapus Cart item Query \n")
 
         const deleteResult = await this.cartsService.deleteItem(itemId);
         if(deleteResult.affected < 1) {
