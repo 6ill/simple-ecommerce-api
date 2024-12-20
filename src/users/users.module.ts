@@ -7,6 +7,7 @@ import { JwtStrategy } from 'src/common/strategies/jwt.strategy';
 import { LocalUserStrategy } from './strategy/local-user.strategy';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { CartsModule } from 'src/carts/carts.module';
 
 @Module({
   imports: [
@@ -16,8 +17,9 @@ import { ConfigService } from '@nestjs/config';
       useFactory: (configService: ConfigService):JwtModuleOptions => ({
         secret: configService.get('JWT_SECRET'),
         signOptions: {expiresIn: configService.get('JWT_EXPIRE_TIME')}
-    })
-  })
+      })
+    }),
+    CartsModule
   ],
   controllers: [UsersController],
   providers: [UsersService, JwtStrategy, LocalUserStrategy],
