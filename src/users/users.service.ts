@@ -7,13 +7,15 @@ import { User } from 'src/database/entities/user.entity';
 import { comparePasswords, hashPassword } from 'src/common/utils';
 import { Repository, UpdateResult } from 'typeorm';
 import { Role } from 'src/common/enums';
+import { CartsService } from 'src/carts/carts.service';
 
 @Injectable()
 export class UsersService {
     constructor(
         @InjectRepository(User)
         private readonly usersRepository: Repository<User>,
-        private readonly jwtService: JwtService
+        private readonly jwtService: JwtService,
+        private readonly cartsService: CartsService
     ) {}
 
     async validateUser(username:string, password:string): Promise<string> {
@@ -42,8 +44,9 @@ export class UsersService {
             ...data,
             hashedPassword
         });
-
-        return await this.usersRepository.save(newUser);
+        const savedUser = await this.usersRepository.save(newUser);
+        await this.cartsService.createCart(savedUser.id);
+        return savedUser;
     }
 
     async getProfile(username:string): Promise<User> {

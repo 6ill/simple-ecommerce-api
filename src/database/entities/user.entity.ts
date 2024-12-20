@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Cart } from "./cart.entity";
 
 @Entity({name: 'users'})
 export class User {
@@ -25,4 +26,7 @@ export class User {
 
     @UpdateDateColumn({name: 'updated_at'})
     updatedAt: Date;
+
+    @OneToOne(() => Cart, (cart) => cart.user, {cascade: true})
+    cart: Cart;
 }
