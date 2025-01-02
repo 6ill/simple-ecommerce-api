@@ -58,7 +58,8 @@ export class UsersService {
                 username:true,
                 email: true,
                 fullName:true,
-                contactNumber: true 
+                contactNumber: true,
+                address: true 
             }
         });
     }

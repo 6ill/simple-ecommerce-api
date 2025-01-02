@@ -27,6 +27,9 @@ export class User {
     @UpdateDateColumn({name: 'updated_at'})
     updatedAt: Date;
 
+    @Column()
+    address: string;
+
     @OneToOne(() => Cart, (cart) => cart.user, {cascade: true})
     cart: Cart;
 }
