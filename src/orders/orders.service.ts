@@ -14,7 +14,6 @@ export class OrdersService {
         @InjectRepository(OrderItem)
         private readonly orderItemsRepository: Repository<OrderItem>,
         private readonly cartsService: CartsService,
-        private readonly httpService: HttpServer
     ) {}
 
     async placeOrder(userId: string, createOrderDto: CreateOrderDto): Promise<Order> {
