@@ -17,7 +17,4 @@ export class SupportTicket {
 
   @CreateDateColumn()
   createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
 }
