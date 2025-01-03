@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Param, ParseUUIDPipe, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { SupportsService } from './supports.service';
 import { JwtGuard } from 'src/common/guards';
 import { CreateTicketDto } from 'src/common/dtos/create-ticket.dto';
