@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 import { OrderItem } from "./order-item.entity";
 import { OrderStatus } from "src/common/enums";
@@ -9,6 +9,7 @@ export class Order {
   id: string;
 
   @ManyToOne(() => User)
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })

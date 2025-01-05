@@ -8,7 +8,7 @@ export class Cart {
   id: string;
 
   @OneToOne(() => User, (user) => user.cart, { onDelete: 'CASCADE' })
-  @JoinColumn() 
+  @JoinColumn({name: 'user_id'}) 
   user: User; 
 
   @OneToMany(() => CartItem, (cartItem) => cartItem.cart, { cascade: true })

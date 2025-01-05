@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('support_tickets')
@@ -7,6 +7,7 @@ export class SupportTicket {
   id: string;
 
   @ManyToOne(() => User)
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @Column()
