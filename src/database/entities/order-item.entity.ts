@@ -18,6 +18,6 @@ export class OrderItem {
   @Column()
   quantity: number;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ name:'total_price', type: 'decimal', precision: 10, scale: 2 })
   totalPrice: number;
 }
