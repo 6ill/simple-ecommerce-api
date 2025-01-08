@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 import { OrderItem } from "./order-item.entity";
 import { OrderStatus } from "src/common/enums";
@@ -15,21 +15,21 @@ export class Order {
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
   items: OrderItem[];
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ name:'total_amount',  type: 'decimal', precision: 10, scale: 2 })
   totalAmount: number;
 
   @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.Pending })
   status: OrderStatus;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ name:'refund_reason', type: 'text', nullable: true })
   refundReason: string;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+  @Column({ name:'refund_amount', type: 'decimal', precision: 10, scale: 2, nullable: true })
   refundAmount: number;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ name:'refund_processed_at', type: 'timestamp', nullable: true })
   refundProcessedAt: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({name: 'created_at'})
   createdAt: Date;
 }
