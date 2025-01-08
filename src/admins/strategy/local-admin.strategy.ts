@@ -14,7 +14,6 @@ async validate(username: string, password: string): Promise<string> {
     if (!jwtToken) {
       throw new UnauthorizedException();
     }
-    console.log("hasil validate strat: ", jwtToken);
     return jwtToken;
   }
 }

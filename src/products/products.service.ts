@@ -35,7 +35,6 @@ export class ProductsService {
     async getAll(queryDto: ProductsQueryDto): Promise<Product[]> {
         const lowestPrice = queryDto.lowestPrice ?? 0;
         const highestPrice = queryDto.highestPrice ? Math.min(queryDto.highestPrice, MAX_INT_SQL) : MAX_INT_SQL;
-        console.log(lowestPrice, highestPrice)
         return await this.productsRepository.find({
             where: {
                 name: ILike(`%${queryDto.name ?? ''}%`),

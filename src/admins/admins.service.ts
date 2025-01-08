@@ -16,7 +16,6 @@ export class AdminsService {
 
     async validateUser(username:string, password:string): Promise<string> {
         try {
-            console.log("")
             const user = await this.adminsRepository.findOneBy({username});
             if(!user) {
                 throw new ForbiddenException(`No admin found with username ${username}`)

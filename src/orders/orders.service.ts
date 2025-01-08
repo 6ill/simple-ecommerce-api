@@ -29,7 +29,6 @@ export class OrdersService {
         }
 
         const totalAmount = selectedCartItems.reduce((sum, item) => sum + item.quantity * item.product.price, 0);            
-        console.log("\n cart userId: \n", userId)
         const order = this.ordersRepository.create({
             user: {id: userId},
             totalAmount
