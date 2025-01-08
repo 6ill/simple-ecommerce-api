@@ -8,3 +8,5 @@ export * from './create-cart-item.dto';
 export * from './update-cart.dto'
 export * from './update-order-status.dto';
 export * from './refund.dto';
+export * from './orders-query.dto';
+export * from './products-query.dto'

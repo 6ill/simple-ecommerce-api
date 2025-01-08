@@ -1,11 +1,11 @@
-import { BadRequestException, Body, Controller, Get, Param, ParseUUIDPipe, Post, Put, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, ParseUUIDPipe, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { JwtGuard, RoleGuard } from 'src/common/guards';
 import { Roles, User } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
-import { CreateOrderDto, RefundDto } from 'src/common/dtos';
+import { CreateOrderDto, OrdersQueryDto, RefundDto } from 'src/common/dtos';
 import { UpdateOrderStatusDto } from 'src/common/dtos/update-order-status.dto';
-import { ApiBadRequestResponse, ApiBearerAuth, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiParam, ApiUnauthorizedResponse } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiBearerAuth, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { SUCCESS_GET_ALL_ORDERS, SUCCESS_GET_ORDER, SUCCESS_PLACE_ORDER, SUCCESS_REFUND, SUCCESS_UPDATE_ORDER_STATUS } from 'src/common/example-responses';
 
 @Controller('orders')
@@ -36,15 +36,17 @@ export class OrdersController {
     }
 
     @Get()
-    @Roles(Role.User)
     @ApiOkResponse({
         example: SUCCESS_GET_ALL_ORDERS
     })
     @ApiUnauthorizedResponse({
         description: "The request is unauthorized due to a missing JWT token or insufficient user permissions"
     })
-    async getAllOrders(@User('id') userId:string) {
-        const orders = await this.ordersService.getAllOrdersByUserId(userId);
+    async getAllOrders(@User('id') userId:string, @User('role') userRole: Role, @Query() ordersQueryDto:OrdersQueryDto) {
+        if (userRole === Role.User) {
+            ordersQueryDto.userId = userId
+        }
+        const orders = await this.ordersService.getAllOrders(ordersQueryDto);
         return {orders};
     }
 

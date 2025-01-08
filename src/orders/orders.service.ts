@@ -1,7 +1,7 @@
-import { BadRequestException, HttpServer, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CartsService } from 'src/carts/carts.service';
-import { CreateOrderDto, RefundDto } from 'src/common/dtos';
+import { CreateOrderDto, OrdersQueryDto, RefundDto } from 'src/common/dtos';
 import { OrderStatus } from 'src/common/enums';
 import { Order, OrderItem } from 'src/database/entities';
 import { Repository } from 'typeorm';
@@ -62,6 +62,43 @@ export class OrdersService {
                 items: {product: true, order:false}
             }
         });
+    }
+    
+    private extractSortOption(sort?: string): Record<string, string> {
+        if(!sort) return {}
+        let sortMethod = 'ASC'
+        let columnName = String(sort)
+        if(sort.startsWith("-", 0)) {
+            sortMethod = 'DESC'
+            columnName = sort.slice(1)
+        }
+        let sortOptions: Record<string, string>
+        switch (columnName) {
+            case "amount":
+                sortOptions = {totalAmount: sortMethod}
+                break;
+            case "date":
+                sortOptions = {createdAt: sortMethod}
+                break;
+            default:
+                sortOptions = {}
+        }
+        return sortOptions
+    }
+
+    async getAllOrders(query: OrdersQueryDto): Promise<Order[]> {
+        const { sort, status, userId } = query
+        
+        return await this.ordersRepository.find({
+            where: {
+                user:{id:userId},
+                status
+            },
+            order: this.extractSortOption(sort),
+            relations: {
+                items: {product: true, order:false}
+            }
+        })
     }
 
     async getOrderById(id: string): Promise<Order> {

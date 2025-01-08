@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { JwtGuard, RoleGuard } from 'src/common/guards';
 import { Roles } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
-import { CreateProductDto, UpdateProductDto, UpdateProductDtoSwagger } from 'src/common/dtos';
+import { CreateProductDto, ProductsQueryDto, UpdateProductDto, UpdateProductDtoSwagger } from 'src/common/dtos';
 import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiParam, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { SUCCESS_CREATE_PRODUCT, SUCCESS_GET_ALL_PRODUCTS, SUCCESS_GET_PRODUCT } from 'src/common/example-responses';
 
@@ -22,8 +22,8 @@ export class ProductsController {
     @ApiUnauthorizedResponse({
         description: "The request is unauthorized due to a missing JWT token or insufficient user permissions"
     })
-    async getAll() {
-        const products = await this.productsService.getAll();
+    async getAll(@Query() productsQueryDto: ProductsQueryDto) {
+        const products = await this.productsService.getAll(productsQueryDto);
         return {products};
     }
 

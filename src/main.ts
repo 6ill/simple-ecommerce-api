@@ -7,7 +7,12 @@ import { DocumentBuilder, SwaggerDocumentOptions, SwaggerModule } from '@nestjs/
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService)
-  app.useGlobalPipes(new ValidationPipe({transform: true}))
+  app.useGlobalPipes(new ValidationPipe({
+    transform: true, 
+    transformOptions: {
+      enableImplicitConversion: true, 
+    }
+    }))
   app.setGlobalPrefix('/v1/api')
 
   const config = new DocumentBuilder()
