@@ -17,7 +17,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('E-Commerce API')
-    .setDescription('The API description')
+    .setDescription("This API provides a comprehensive suite of e-commerce functionalities, enabling seamless management of products, user accounts, shopping carts, orders, and support services. It facilitates efficient operations for online retail platforms, ensuring a robust and scalable solution for e-commerce needs.")
     .setVersion('1.0')
     .addBearerAuth()
     .build();
