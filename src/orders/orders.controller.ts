@@ -3,8 +3,7 @@ import { OrdersService } from './orders.service';
 import { JwtGuard, RoleGuard } from 'src/common/guards';
 import { Roles, User } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
-import { CreateOrderDto, OrdersQueryDto, RefundDto } from 'src/common/dtos';
-import { UpdateOrderStatusDto } from 'src/common/dtos/update-order-status.dto';
+import { CreateOrderDto, OrdersQueryDto, RefundDto, UpdateOrderStatusDto } from 'src/common/dtos';
 import { ApiBadRequestResponse, ApiBearerAuth, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { SUCCESS_GET_ALL_ORDERS, SUCCESS_GET_ORDER, SUCCESS_PLACE_ORDER, SUCCESS_REFUND, SUCCESS_UPDATE_ORDER_STATUS } from 'src/common/example-responses';
 
