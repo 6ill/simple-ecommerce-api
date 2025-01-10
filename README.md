@@ -61,7 +61,7 @@ npm run start:prod
 
 ## API Documentation
 The API documentation is auto-generated with Swagger.
-After starting the server, navigate to http://localhost:<PORT>/v1/api/docs to access the documentation.
+After starting the server, navigate to "http://localhost:PROJECT_PORT_NUMBER/v1/api/docs" to access the documentation.
 
 ## Author
 👤 **Bill Hensen**
