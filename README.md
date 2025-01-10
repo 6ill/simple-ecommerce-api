@@ -1,75 +1,71 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<h1 align="center">Welcome to ecommerce-api 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/6ill/ecommerce-api/blob/master/LICENSE)" target="_blank">
+    <img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-blue">
+  </a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a simple REST API built for an e-commerce platform. It provides core functionalities such as:   
+- **User Management**: Authentication, authorization, and user profile handling.  
+- **Product Management**: Adding, updating, deleting, and retrieving product details.  
+- **Shopping Cart**: Adding products to the cart, updating quantities, and clearing the cart.  
+- **Order Management**: Creating orders, tracking order status, and viewing order history.  
+- **Support Tickets**: Managing customer inquiries and issue resolution.  
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The API is built with **Node.js** using the **NestJS** framework, **PostgreSQL** for the database, and **Swagger** for API documentation. It is designed to be scalable, maintainable, and easy to integrate with frontend applications.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features  
 
-The project specifications based on [Source](https://projects.masteringbackend.com/projects/e-commerce-api-build-your-own-alibaba) 
+- **Secure Authentication**: Uses Passport.js with local and JWT strategies for authentication.  
+- **Swagger Integration**: Auto-generated API documentation for easier collaboration.  
+- **Scalable Structure**: Modular design with NestJS to handle future feature expansions.  
+- **Environment Configurations**: `.env` support for environment-specific settings.  
 
-## Installation
+---
 
-```bash
-$ npm install
+## Prerequisites  
+
+Before running the application, ensure you have the following installed:  
+- Node.js (>=16.x)  
+- npm (>=7.x)  
+- PostgreSQL  
+
+---
+
+## Install  
+
+Clone the repository and install dependencies:  
+
+```
+git clone https://github.com/6ill/ecommerce-api.git
+cd ecommerce-api
+npm install
+```
+## Environment Setup
+Create a .env file in the root directory based on .env.example.
+
+## Usage 
+```
+# Development
+npm run start
+
+# Watch mode
+npm run start:dev
+
+# Production
+npm run start:prod
 ```
 
-## Running the app
+## API Documentation
+The API documentation is auto-generated with Swagger.
+After starting the server, navigate to http://localhost:<PORT>/v1/api/docs to access the documentation.
 
-```bash
-# development
-$ npm run start
+## Author
+👤 **Bill Hensen**
+* Github: [@6ill](https://github.com/6ill)
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+## Show your support
+Give a ⭐️ if this project helped you!
