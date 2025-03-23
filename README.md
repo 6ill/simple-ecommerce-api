@@ -66,6 +66,7 @@ After starting the server, navigate to "http://localhost:PROJECT_PORT_NUMBER/v1/
 ## Author
 👤 **Bill Hensen**
 * Github: [@6ill](https://github.com/6ill)
+* Medium: [My Medium Blog](https://medium.com/@kyrbill123/building-my-first-e-commerce-rest-api-067147a3688b)
 
 ## Show your support
 Give a ⭐️ if this project helped you!
